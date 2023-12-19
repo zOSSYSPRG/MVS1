@@ -1,0 +1,14 @@
+---
+- hosts: MVS1
+  collections:
+    - ibm.ibm_zos_core
+  gather_facts: no
+  vars:
+  environment: "{{ environment_vars }}"
+
+# 1. Command for Dynamic APF update  
+  tasks:
+   - name: "Issue the command for Display"
+     zos_operator:
+      cmd: 'D IPLINFO'
+     register: command_output
